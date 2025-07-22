@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 //
@@ -91,7 +92,7 @@ io.on('connection', (socket) => {
 
 //
 
-mongoose.connect('mongodb+srv://admin:cluster1234@secretcluster.vi3horw.mongodb.net/?retryWrites=true&w=majority&appName=SecretCluster', {
+mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => console.log('✅ MongoDB conectado'))
 .catch(err => {
